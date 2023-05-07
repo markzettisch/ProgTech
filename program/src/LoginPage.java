@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
@@ -68,6 +70,31 @@ public class LoginPage extends JFrame {
                     password.setEchoChar((char)0);
                     password.setText(password_show_text);
                 }
+            }
+        });
+        login_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(username.getText().isEmpty()) {
+                    System.out.println("Üres mező");
+                } else if(password.getText().isEmpty()) {
+                    System.out.println("Üres mező");
+                } else if(username.getText().contains("Felhasználónév")) {
+                    System.out.println("Üres mező");
+                } else if(password.getText().contains("Jelszó")) {
+                    System.out.println("Üres mező");
+                } else {
+                    Database db = new Database();
+                    boolean checkedLogin = db.checkLogin(username.getText(), password.getText());
+                    if(checkedLogin == true) {
+                        System.out.println("OK");
+                    } else {
+                        System.out.println("Hibás felhasználónév vagy jelszó");
+                    }
+
+                }
+
             }
         });
     }
