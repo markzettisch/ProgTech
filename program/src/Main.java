@@ -3,6 +3,7 @@ public class Main {
 
         System.out.printf("Hello and welcome!");
         new LoginPage();
+        new RegisterPage();
 
     }
 }
