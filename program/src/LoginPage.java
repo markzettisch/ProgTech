@@ -15,6 +15,7 @@ public class LoginPage extends JFrame {
     private JButton login_btn;
     private JPasswordField password;
     private JButton reg_button;
+    private JLabel error_text;
 
     public LoginPage() {
         setIconImage(new ImageIcon("login.png").getImage());
@@ -33,6 +34,8 @@ public class LoginPage extends JFrame {
         password.setText(password_show_text);
         password.setForeground(Color.GRAY);
         password.setEchoChar((char)0);
+
+        error_text.setText("");
 
         username.addFocusListener(new FocusAdapter() {
             @Override
@@ -78,12 +81,16 @@ public class LoginPage extends JFrame {
 
                 if(username.getText().isEmpty()) {
                     System.out.println("Üres mező");
+                    error_text.setText("Üres mező");
                 } else if(password.getText().isEmpty()) {
                     System.out.println("Üres mező");
+                    error_text.setText("Üres mező");
                 } else if(username.getText().contains("Felhasználónév")) {
                     System.out.println("Üres mező");
+                    error_text.setText("Üres mező");
                 } else if(password.getText().contains("Jelszó")) {
                     System.out.println("Üres mező");
+                    error_text.setText("Üres mező");
                 } else {
                     Database db = new Database();
                     boolean checkedLogin = db.checkLogin(username.getText(), password.getText());
@@ -91,6 +98,7 @@ public class LoginPage extends JFrame {
                         System.out.println("OK");
                     } else {
                         System.out.println("Hibás felhasználónév vagy jelszó");
+                        error_text.setText("Hibás felhasználónév vagy jelszó");
                     }
 
                 }
