@@ -32,8 +32,8 @@ public class Database {
         }
     }
 
-    public boolean checkLogin(String username, String password) {
-        int error = 1;
+    public int checkLogin(String username, String password) {
+        int ID = 0;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(db_url, db_username, db_pass);
@@ -44,7 +44,7 @@ public class Database {
             while(resultSet.next()) {
                 if(resultSet.getString(2).equals(username)) //van ilyen felhasználónév
                     if(resultSet.getString(4).equals(password)) //a felhasználónévhez tartozó jelszó is helyes
-                        error = 0;
+                        ID = resultSet.getInt(1);
             }
 
 
@@ -55,12 +55,57 @@ public class Database {
             System.out.println(e);
         }
 
-        if(error == 1)
-            return false;
-        else
-            return true;
+        return ID;
     }
 
+    public boolean checkUsername(String username) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_pass);
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("select * from users");
+
+            while(resultSet.next()) {
+                if(resultSet.getString(2).equals(username)) {
+                    //van ilyen felhasználónév
+                    return true;
+                }
+
+            }
+
+
+            connection.close();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return false;
+
+
+    }
+
+    public boolean addUser(String username, String full_name, String password) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_pass);
+            Statement statement = connection.createStatement();
+
+            statement.executeUpdate("INSERT INTO users (username, full_name, password) VALUES ('"+username+"','"+full_name+"','"+password+"');");
+
+            connection.close();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return false;
+
+
+    }
 
 
 }

@@ -25,6 +25,8 @@ public class LoginPage extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         add(mainPanel);
+        mainPanel.getRootPane().setDefaultButton(login_btn);
+
 
         String username_show_text = "Felhasználónév";
         username.setText(username_show_text);
@@ -93,15 +95,27 @@ public class LoginPage extends JFrame {
                     error_text.setText("Üres mező");
                 } else {
                     Database db = new Database();
-                    boolean checkedLogin = db.checkLogin(username.getText(), password.getText());
-                    if(checkedLogin == true) {
-                        System.out.println("OK");
-                    } else {
+                    int checkedLogin_ID = db.checkLogin(username.getText(), password.getText());
+                    if(checkedLogin_ID == 0) {
                         System.out.println("Hibás felhasználónév vagy jelszó");
                         error_text.setText("Hibás felhasználónév vagy jelszó");
+                    } else {
+                        System.out.println("OK");
+                        setVisible(false);
+                        dispose();
+                        new MainPage(checkedLogin_ID);
                     }
 
                 }
+
+            }
+        });
+        reg_button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                dispose();
+                new RegisterPage();
 
             }
         });
