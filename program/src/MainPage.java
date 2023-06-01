@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 
 public class MainPage extends JFrame {
 
     private JPanel mainPanel;
     private JPanel text;
     private JPanel form;
-    private JLabel error_text;
     private JButton login_btn;
     private JButton logout;
     private JPanel Main;
@@ -38,6 +38,19 @@ public class MainPage extends JFrame {
         szobak.addItem("102-es szoba");
         szobak.addItem("103-as szoba");
         szobak.addItem("104-es szoba");
+        for(int i = Calendar.getInstance().get(Calendar.YEAR); i < (Calendar.getInstance().get(Calendar.YEAR))+3; i++) {
+            erk_ev.addItem(i);
+            tav_ev.addItem(i);
+        }
+        for(int i = 1; i <= 12; i++) {
+            erk_honap.addItem(i);
+            tav_honap.addItem(i);
+        }
+        for(int i = 1; i <= 31; i++) {
+            erk_nap.addItem(i);
+            tav_nap.addItem(i);
+        }
+
 
 
         logged.setText("Belépve: " + db.IDtoData(ID));
@@ -54,6 +67,12 @@ public class MainPage extends JFrame {
             }
         });
 
+        login_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
 
