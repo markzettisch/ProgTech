@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Jún 01. 18:46
+-- Létrehozás ideje: 2023. Jún 01. 21:24
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -42,7 +42,8 @@ CREATE TABLE `reservations` (
 
 INSERT INTO `reservations` (`ID`, `user_ID`, `erk`, `tav`, `count`, `room`) VALUES
 (1, 1, '2023-01-01', '2023-01-01', 12, 101),
-(2, 1, '2023-01-01', '2025-12-31', 12, 103);
+(2, 1, '2023-01-01', '2025-12-31', 12, 103),
+(3, 9, '2025-06-21', '2025-12-27', 100, 104);
 
 -- --------------------------------------------------------
 
@@ -90,13 +91,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
