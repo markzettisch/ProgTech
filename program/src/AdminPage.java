@@ -9,6 +9,7 @@ public class AdminPage extends JFrame {
     private JLabel logged;
     private JPanel form;
     private JButton logout;
+    private JList list1;
 
     public AdminPage(int ID) {
         Database db = new Database();
