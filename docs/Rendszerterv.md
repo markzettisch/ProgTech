@@ -1,4 +1,5 @@
 ## 1. Rendszer célja
+A rendszer célja, olyan Java alkalmazás fejlesztése, mely képes foglalásokat rögzíteni, tárolni és kiírni egy adatbázisba, majd onnan kiolvasni adatot. A program egyszerű felülettel rendelkezik. A felhasználó képes foglalni könnyedén az év, hónap és nap megadásával. További adatként megadható az éjszakák és a szobaszáma. 
 
 ## 2. Projektterv
 ### 2.1 Feladat: 
@@ -12,6 +13,9 @@
 |-------------------------|----------------------------------------|-----------|---------------|------------------------|------------------|---------------------|
 |Rendszerterv             |Megírás                                 |         1 |             1 |                      1 |                1 |                   1 |
 |Adatbázis                  |Elkészítés                |         2 |             1 |                      1 |                1 |                   1 |
+|Program                  |Login elkészítése                |         3 |             2 |                      8 |                8 |                   8 |
+|Program                  |Főoldal elkészítése                |         3 |             2 |                      8 |                8 |                   8 |
+|Program                  |Admin panel elkészítése                |         3 |             2 |                      8 |                8 |                   8 |
 |Program                  |Alapfunkciók elkészítése                |         3 |             8 |                      8 |                8 |                   8 |
 |Program                  |Felhasználói felület kialakítása	                |         3 |             5 |                      5 |                5 |                   5 |
 |Program                  |Tesztelés                |         4 |             2 |                      2 |                2 |                   2 |
@@ -24,11 +28,20 @@
 
 
 ## 3. Folyamatok modellje
-![Üzleti folyamatok](../docs/pics/uzlet.png)
+### 3.1 Üzleti Entitások:
+  - **Bejelentkezés**
+  - **Kijelentkezés**
+  - **Regisztráció**
+  - **Lista**
+
 
 ## 4. Követelmények
 **Funkcionális követelmények**
-  - **-**
+  - **Bejelentkezés**
+  - **Kijelentkezés**
+  - **Regisztráció**
+  - **Foglalás rögzítés**
+  - **Foglalás listázása**
 
   **Nem funkcionális követelmények**
 
@@ -36,6 +49,9 @@
   - **GDPR-nek való megfelelés**
 
 ## 5. Funkcionális terv
+**Rendszerszereplők:**
+ - **Rendszergazda**
+ - **Felhasználó**
 
 
 ## 6. Fizikai környezet
@@ -59,7 +75,7 @@ A rendszer működéséhez szükség van egy adatbázis szerverre, ebben az eset
 ## 9. Implementációs terv
 Java alkalmazás készítése a következő tervezési minták igénybevételével:
 - **Command** 
-- **Strategy (Stratégia)** 
+- **Absztrakt Factory** 
 
 
 ## 10. Tesztterv
