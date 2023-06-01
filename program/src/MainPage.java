@@ -10,10 +10,17 @@ public class MainPage extends JFrame {
     private JPanel form;
     private JLabel error_text;
     private JButton login_btn;
-    private JPasswordField password;
     private JButton logout;
     private JPanel Main;
     private JLabel logged;
+    private JComboBox erk_ev;
+    private JComboBox erk_honap;
+    private JComboBox erk_nap;
+    private JComboBox tav_ev;
+    private JComboBox tav_honap;
+    private JComboBox tav_nap;
+    private JTextField textField1;
+    private JComboBox szobak;
 
 
     public MainPage(int ID) {
@@ -26,6 +33,12 @@ public class MainPage extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         add(mainPanel);
+
+        szobak.addItem("101-es szoba");
+        szobak.addItem("102-es szoba");
+        szobak.addItem("103-as szoba");
+        szobak.addItem("104-es szoba");
+
 
         logged.setText("Belépve: " + db.IDtoData(ID));
 
