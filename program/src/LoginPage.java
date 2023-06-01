@@ -40,8 +40,8 @@ public class LoginPage extends JFrame {
 
 
 
-        username.setText("zetmark");
-        password.setText("zetmark");
+        username.setText("admin");
+        password.setText("admin");
 
 
 
@@ -110,7 +110,13 @@ public class LoginPage extends JFrame {
                         error_text.setText("Hibás felhasználónév vagy jelszó");
                     } else {
                         System.out.println("OK");
-                        new MainPage(checkedLogin_ID);
+                        int type = db.getType(checkedLogin_ID);
+                        if (type == 0) {
+                            new MainPage(checkedLogin_ID);
+                        } else {
+                            new MainPage(checkedLogin_ID);
+                        }
+
                         setVisible(false);
                         dispose();
                     }

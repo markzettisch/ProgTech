@@ -86,6 +86,31 @@ public class Database implements Database_IF {
     }
 
     @Override
+    public int getType(int ID) {
+        int type = 0;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_pass);
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("select * from users where ID='"+ID+"'");
+
+            while(resultSet.next()) {
+                type = resultSet.getInt(5);
+            }
+
+
+            connection.close();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return type;
+    }
+
+    @Override
     public boolean checkUsername(String username) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -143,7 +168,7 @@ public class Database implements Database_IF {
             Connection connection = DriverManager.getConnection(db_url, db_username, db_pass);
             Statement statement = connection.createStatement();
 
-            statement.executeUpdate("INSERT INTO users (user_ID, erk, tav, count, room) VALUES ('"+user_ID+"','"+erk+"','"+tav+"','"+count+"','"+room+"');");
+            statement.executeUpdate("INSERT INTO reservations (user_ID, erk, tav, count, room) VALUES ('"+user_ID+"','"+erk+"','"+tav+"','"+count+"','"+room+"');");
 
             connection.close();
 
