@@ -111,8 +111,8 @@ public class LoginPage extends JFrame {
                     } else {
                         System.out.println("OK");
                         int type = db.getType(checkedLogin_ID);
-                        if (type == 0) {
-                            new MainPage(checkedLogin_ID);
+                        if (type == 1) {
+                            new AdminPage(checkedLogin_ID);
                         } else {
                             new MainPage(checkedLogin_ID);
                         }
