@@ -61,6 +61,31 @@ public class Database implements Database_IF {
     }
 
     @Override
+    public String IDtoData(int ID) {
+        String full_name = "";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_pass);
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("select * from users where ID='"+ID+"'");
+
+            while(resultSet.next()) {
+                full_name = resultSet.getString(3);
+            }
+
+
+            connection.close();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return full_name;
+    }
+
+    @Override
     public boolean checkUsername(String username) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

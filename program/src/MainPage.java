@@ -1,4 +1,3 @@
-import javax.management.Notification;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,10 +12,13 @@ public class MainPage extends JFrame {
     private JButton login_btn;
     private JPasswordField password;
     private JButton logout;
-
+    private JPanel Main;
+    private JLabel logged;
 
 
     public MainPage(int ID) {
+        Database db = new Database();
+
         setIconImage(new ImageIcon("main.png").getImage());
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,6 +26,8 @@ public class MainPage extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         add(mainPanel);
+
+        logged.setText("Belépve: " + db.IDtoData(ID));
 
 
 
