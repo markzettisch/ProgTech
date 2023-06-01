@@ -151,7 +151,7 @@ public class Database implements Database_IF {
             ResultSet resultSet = statement.executeQuery("select * from reservations");
 
             while(resultSet.next()) {
-                
+
                 new Guest(resultSet.getInt(2), resultSet.getString(3), resultSet.getString(4), resultSet.getInt(5), resultSet.getInt(6));
             }
 
