@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class AdminPage extends JFrame {
     private JPanel mainPanel;
@@ -9,10 +10,16 @@ public class AdminPage extends JFrame {
     private JLabel logged;
     private JPanel form;
     private JButton logout;
-    private JList list1;
+    private JList list;
+
+    public ArrayList<Reservations> reservation = new ArrayList<>();
 
     public AdminPage(int ID) {
         Database db = new Database();
+        db.refreshData();
+
+
+
 
         setIconImage(new ImageIcon("main.png").getImage());
         setResizable(false);

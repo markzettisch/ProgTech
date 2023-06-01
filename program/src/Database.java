@@ -140,6 +140,33 @@ public class Database implements Database_IF {
 
     }
 
+
+    @Override
+    public void refreshData() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_pass);
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("select * from reservations");
+
+            while(resultSet.next()) {
+                
+                new Guest(resultSet.getInt(2), resultSet.getString(3), resultSet.getString(4), resultSet.getInt(5), resultSet.getInt(6));
+            }
+
+
+            connection.close();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+
+
+    }
+
     @Override
     public boolean addUser(String username, String full_name, String password) {
         try {
