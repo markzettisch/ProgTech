@@ -4,8 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.logging.Logger;
 
 public class LoginPage extends JFrame {
+
+    private static Logger logger = Logger.getLogger(Main.class.getName());
+
 
     private JPanel panelmain;
     private JPanel mainPanel;
@@ -84,23 +88,29 @@ public class LoginPage extends JFrame {
                 if(username.getText().isEmpty()) {
                     System.out.println("Üres mező");
                     error_text.setText("Üres mező");
+                    logger.info("Sikertelen bejelentkezés történt");
                 } else if(password.getText().isEmpty()) {
                     System.out.println("Üres mező");
                     error_text.setText("Üres mező");
+                    logger.info("Sikertelen bejelentkezés történt");
                 } else if(username.getText().contains("Felhasználónév")) {
                     System.out.println("Üres mező");
                     error_text.setText("Üres mező");
+                    logger.info("Sikertelen bejelentkezés történt");
                 } else if(password.getText().contains("Jelszó")) {
                     System.out.println("Üres mező");
                     error_text.setText("Üres mező");
+                    logger.info("Sikertelen bejelentkezés történt");
                 } else {
                     Database db = new Database();
                     int checkedLogin_ID = db.checkLogin(username.getText(), password.getText());
                     if(checkedLogin_ID == 0) {
                         System.out.println("Hibás felhasználónév vagy jelszó");
                         error_text.setText("Hibás felhasználónév vagy jelszó");
+                        logger.info("Sikertelen bejelentkezés történt");
                     } else {
                         System.out.println("OK");
+                        logger.info("Sikeres bejelentkezés történt");
                         int type = db.getType(checkedLogin_ID);
                         if (type == 1) {
                             new AdminPage(checkedLogin_ID);
