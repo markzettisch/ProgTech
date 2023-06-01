@@ -37,15 +37,6 @@ public class LoginPage extends JFrame {
         password.setForeground(Color.GRAY);
         password.setEchoChar((char)0);
 
-
-
-
-        username.setText("admin");
-        password.setText("admin");
-
-
-
-
         error_text.setText("");
 
         username.addFocusListener(new FocusAdapter() {

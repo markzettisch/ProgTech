@@ -74,7 +74,7 @@ public class MainPage extends JFrame {
                 String erk = erk_ev.getSelectedItem().toString()+"-"+erk_honap.getSelectedItem().toString()+"-"+erk_nap.getSelectedItem().toString()+"";
                 String tav = tav_ev.getSelectedItem().toString()+"-"+tav_honap.getSelectedItem().toString()+"-"+tav_nap.getSelectedItem().toString()+"";
                 db.addReservation(ID, erk, tav, Integer.parseInt(count.getText()), Integer.parseInt(szobak.getSelectedItem().toString()));
-
+                new SuccessReservation();
             }
         });
     }
