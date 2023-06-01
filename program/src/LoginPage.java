@@ -37,6 +37,15 @@ public class LoginPage extends JFrame {
         password.setForeground(Color.GRAY);
         password.setEchoChar((char)0);
 
+
+
+
+        username.setText("zetmark");
+        password.setText("zetmark");
+
+
+
+
         error_text.setText("");
 
         username.addFocusListener(new FocusAdapter() {
@@ -101,9 +110,9 @@ public class LoginPage extends JFrame {
                         error_text.setText("Hibás felhasználónév vagy jelszó");
                     } else {
                         System.out.println("OK");
+                        new MainPage(checkedLogin_ID);
                         setVisible(false);
                         dispose();
-                        new MainPage(checkedLogin_ID);
                     }
 
                 }

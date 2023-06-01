@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Database {
+public class Database implements Database_IF {
 
 
     private String db_url = "jdbc:mysql://localhost:3306/progtech";
@@ -11,6 +11,7 @@ public class Database {
     private String db_pass = "";
 
 
+    @Override
     public void Test() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,6 +33,7 @@ public class Database {
         }
     }
 
+    @Override
     public int checkLogin(String username, String password) {
         int ID = 0;
         try {
@@ -58,6 +60,7 @@ public class Database {
         return ID;
     }
 
+    @Override
     public boolean checkUsername(String username) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -87,6 +90,7 @@ public class Database {
 
     }
 
+    @Override
     public boolean addUser(String username, String full_name, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
