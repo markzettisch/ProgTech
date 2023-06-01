@@ -59,7 +59,7 @@ A rendszer működéséhez szükség van egy adatbázis szerverre, ebben az eset
 ## 9. Implementációs terv
 Java alkalmazás készítése a következő tervezési minták igénybevételével:
 - **Command** 
-- **Adapter (Illesztő)** 
+- **Strategy (Stratégia)** 
 
 
 ## 10. Tesztterv
