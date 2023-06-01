@@ -19,7 +19,7 @@ public class MainPage extends JFrame {
     private JComboBox tav_ev;
     private JComboBox tav_honap;
     private JComboBox tav_nap;
-    private JTextField textField1;
+    private JTextField count;
     private JComboBox szobak;
 
 
@@ -34,10 +34,10 @@ public class MainPage extends JFrame {
         setVisible(true);
         add(mainPanel);
 
-        szobak.addItem("101-es szoba");
-        szobak.addItem("102-es szoba");
-        szobak.addItem("103-as szoba");
-        szobak.addItem("104-es szoba");
+        szobak.addItem("101");
+        szobak.addItem("102");
+        szobak.addItem("103");
+        szobak.addItem("104");
         for(int i = Calendar.getInstance().get(Calendar.YEAR); i < (Calendar.getInstance().get(Calendar.YEAR))+3; i++) {
             erk_ev.addItem(i);
             tav_ev.addItem(i);
@@ -70,6 +70,10 @@ public class MainPage extends JFrame {
         login_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Database db = new Database();
+                String erk = erk_ev.getSelectedItem().toString()+"-"+erk_honap.getSelectedItem().toString()+"-"+erk_nap.getSelectedItem().toString()+"";
+                String tav = tav_ev.getSelectedItem().toString()+"-"+tav_honap.getSelectedItem().toString()+"-"+tav_nap.getSelectedItem().toString()+"";
+                db.addReservation(ID, erk, tav, Integer.parseInt(count.getText()), Integer.parseInt(szobak.getSelectedItem().toString()));
 
             }
         });

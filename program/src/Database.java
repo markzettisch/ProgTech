@@ -136,5 +136,23 @@ public class Database implements Database_IF {
 
     }
 
+    @Override
+    public void addReservation(int user_ID, String erk, String tav, int count, int room) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_pass);
+            Statement statement = connection.createStatement();
+
+            statement.executeUpdate("INSERT INTO users (user_ID, erk, tav, count, room) VALUES ('"+user_ID+"','"+erk+"','"+tav+"','"+count+"','"+room+"');");
+
+            connection.close();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
 
 }
